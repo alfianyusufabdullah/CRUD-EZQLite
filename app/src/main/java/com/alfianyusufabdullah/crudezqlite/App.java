@@ -1,8 +1,6 @@
 package com.alfianyusufabdullah.crudezqlite;
 
 import android.app.Application;
-import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 
 import com.alfianyusufabdullah.crudezqlite.common.DatabaseConfig;
 
