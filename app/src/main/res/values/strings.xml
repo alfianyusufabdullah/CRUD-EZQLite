@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">CRUD-EZQLite</string>
+
+    <string name="hint_nama">Nama Mahasiswa</string>
+    <string name="hint_nim">NIM</string>
+    <string name="hint_semester">Semester Mahasiswa</string>
+
+    <string name="btn_text_tambah_data">Tambah Data</string>
+    <string name="btn_text_liat_data">Liat Data</string>
+    <string name="btn_text_update_data">Update Data</string>
+
+</resources>
