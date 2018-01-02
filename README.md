@@ -1,3 +1,3 @@
 # CRUD-EZQLite
 
-Implemantation EZQLite Library :tada:
+Implementation EZQLite Library :tada:
