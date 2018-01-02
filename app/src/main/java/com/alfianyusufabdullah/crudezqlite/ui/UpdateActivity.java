@@ -41,7 +41,6 @@ public class UpdateActivity extends AppCompatActivity implements View.OnClickLis
 
 
     private void initView() {
-
         mahasiswa = getIntent().getParcelableExtra("DATA");
 
         textNama = mahasiswa.getNama();
@@ -62,7 +61,6 @@ public class UpdateActivity extends AppCompatActivity implements View.OnClickLis
 
         btnUpdateData = findViewById(R.id.btnUpdateData);
         btnUpdateData.setOnClickListener(this);
-
     }
 
     private void hideSoftkey(View v) {
@@ -86,21 +84,18 @@ public class UpdateActivity extends AppCompatActivity implements View.OnClickLis
         if (textNama.isEmpty()) {
             inputNama.setError("Masukkan Nama Mahasiswa");
             etNama.requestFocus();
-
             return;
         }
 
         if (textNim.isEmpty()) {
             inputNim.setError("Masukkan NIM");
             etNim.requestFocus();
-
             return;
         }
 
         if (textSemester.isEmpty()) {
             inputSemester.setError("Masukkan Semester");
             etSemester.requestFocus();
-
             return;
         }
 
@@ -115,10 +110,8 @@ public class UpdateActivity extends AppCompatActivity implements View.OnClickLis
                 .update(new OnDatabaseCallback() {
                     @Override
                     public void Success() {
-
                         hideSoftkey(etNama);
                         showSnackbar("Berhasil Mengupdate Data");
-
                     }
 
                     @Override
@@ -132,7 +125,6 @@ public class UpdateActivity extends AppCompatActivity implements View.OnClickLis
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
             finish();
-
             return true;
         }
         return super.onOptionsItemSelected(item);

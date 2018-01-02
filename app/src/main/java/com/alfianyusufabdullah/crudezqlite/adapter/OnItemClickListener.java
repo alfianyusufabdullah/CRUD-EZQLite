@@ -12,6 +12,5 @@ import com.alfianyusufabdullah.crudezqlite.model.ModelMahasiswa;
  */
 
 public interface OnItemClickListener {
-
     void Click(View v, ModelMahasiswa mahasiswa, int pos);
 }

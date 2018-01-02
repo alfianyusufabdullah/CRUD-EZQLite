@@ -42,12 +42,10 @@ public class ListActivity extends AppCompatActivity implements OnItemClickListen
         setContentView(R.layout.activity_list);
 
         ezqLite = EZQLite.getInstance(this);
-
         if (getSupportActionBar() != null) {
             getSupportActionBar().setTitle("Daftar Mahasiswa");
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
-
         adapterDaftarMahasiswa = new AdapterDaftarMahasiswa(dataMahasiswa, this);
 
         initView();
@@ -55,16 +53,13 @@ public class ListActivity extends AppCompatActivity implements OnItemClickListen
 
     @Override
     public void Click(View v, final ModelMahasiswa mahasiswa, final int pos) {
-
         PopupMenu popupMenu = new PopupMenu(ListActivity.this, v, Gravity.END);
         popupMenu.inflate(R.menu.row_menu);
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-
                 switch (item.getItemId()) {
                     case R.id.menu_delete:
-
                         AlertDialog.Builder builder = new AlertDialog.Builder(ListActivity.this);
                         builder.setTitle("Hapus Data");
                         builder.setMessage("Apakah Kamu Ingin Menghapus Data " + mahasiswa.getNama() + "?");
@@ -73,18 +68,15 @@ public class ListActivity extends AppCompatActivity implements OnItemClickListen
                             public void onClick(DialogInterface dialogInterface, int i) {
 
                                 String whereClause = DatabaseConfig.COL_ID + "=" + mahasiswa.getId();
-
                                 ezqLite.doRemove(DatabaseConfig.TABEL_NAME)
                                         .whereClause(whereClause)
                                         .remove(new OnDatabaseCallback() {
                                             @Override
                                             public void Success() {
-
                                                 dataMahasiswa.remove(pos);
                                                 adapterDaftarMahasiswa.notifyDataSetChanged();
 
                                                 showSnackbar("Berhasil Menghapus Data");
-
                                             }
 
                                             @Override
@@ -92,7 +84,6 @@ public class ListActivity extends AppCompatActivity implements OnItemClickListen
                                                 showSnackbar(s);
                                             }
                                         });
-
                             }
                         });
                         builder.setNegativeButton("BATAL", null);
@@ -100,10 +91,8 @@ public class ListActivity extends AppCompatActivity implements OnItemClickListen
 
                         break;
                     case R.id.menu_update:
-
                         Intent update = new Intent(ListActivity.this , UpdateActivity.class);
                         update.putExtra("DATA" , mahasiswa);
-
                         startActivity(update);
                         break;
                 }
@@ -111,20 +100,16 @@ public class ListActivity extends AppCompatActivity implements OnItemClickListen
             }
         });
         popupMenu.show();
-
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-
         dataMahasiswa.clear();
-
         ezqLite.doLoad(DatabaseConfig.TABEL_NAME)
                 .load(new OnDatabaseCursorCallback() {
                     @Override
                     public void Success(Cursor cursor) {
-
                         if (cursor.moveToFirst()) {
                             do {
                                 ModelMahasiswa mahasiswa = new ModelMahasiswa();
@@ -151,7 +136,6 @@ public class ListActivity extends AppCompatActivity implements OnItemClickListen
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
             finish();
-
             return true;
         }
         return super.onOptionsItemSelected(item);

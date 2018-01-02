@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initView() {
-
         inputNama = findViewById(R.id.inputNama);
         inputNim = findViewById(R.id.inputNim);
         inputSemester = findViewById(R.id.inputSemester);
@@ -52,17 +51,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         btnLiatData.setOnClickListener(this);
         btnTambahData.setOnClickListener(this);
-
     }
 
     @Override
     public void onClick(View view) {
-
         switch (view.getId()) {
             case R.id.btnLihatData:
-
                 startActivity(new Intent(MainActivity.this , ListActivity.class));
-
                 break;
             case R.id.btnTambahData:
 
@@ -73,21 +68,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (textNama.isEmpty()) {
                     inputNama.setError("Masukkan Nama Mahasiswa");
                     etNama.requestFocus();
-
                     return;
                 }
 
                 if (textNim.isEmpty()) {
                     inputNim.setError("Masukkan NIM");
                     etNim.requestFocus();
-
                     return;
                 }
 
                 if (textSemester.isEmpty()) {
                     inputSemester.setError("Masukkan Semester");
                     etSemester.requestFocus();
-
                     return;
                 }
 
@@ -99,7 +91,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         .insert(new OnDatabaseCallback() {
                             @Override
                             public void Success() {
-
                                 hideSoftkey(etNama);
 
                                 etNama.setText("");
@@ -115,20 +106,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 etNim.clearFocus();
 
                                 Snackbar.make(findViewById(R.id.rootView), "Berhasil Menambah Data", Snackbar.LENGTH_SHORT).show();
-
                             }
 
                             @Override
                             public void Failed(String s) {
-
                                 Toast.makeText(MainActivity.this, s, Toast.LENGTH_SHORT).show();
-
                             }
                         });
-
                 break;
         }
-
     }
 
     private void hideSoftkey(View v) {
